@@ -587,3 +587,149 @@
 # one named argument provided -- provided value is used as the value of the parameter of the same name, and the other parameter's default value is used
 # both unnamed arguments provided -- values assigned to parameters in order (i.e. what we've been doing up to this point)
 # both named arguments provided -- values are assigned to associated parameter (and then order doesn't matter!)
+
+
+
+# When wanting to use random numbers, you can import the random module.
+# Then you use the randint(starting_number, ending_number) function to set arguments. For example:
+# import random 
+# random_number = random.randint(0,5)
+# An important note about using random is that the ending number is inclusive, unlike when doing a for loop, for example.
+
+# Below is an example application of the above. It is using the random_num variable to randomly select the indices for
+# the numbers variable. 
+
+# import random
+# random_num = random.randint(0,5)
+# numbers = ["zero", "one", "two", "three", "four", "five"]
+# print(numbers[random_num])
+
+# *Changing or Updating Values
+# Each key in a dictionary must be unique. If you make an assignment using an existing key as the index, the old value 
+# associated with that key is overwritten by the new value. You can use this characteristic to an advantage in order to 
+# modify an existing value for an existing key. 
+
+# person = {"first": "Ada", "last": "Lovelace", "age": 42, "is_organ_donor": True}
+# # Adds a new key value pair for email to person
+# person["email"] = "alovelace@codingdojo.com"
+
+# # Changes person's "last" value to "Bobada"
+# person["last"] = "Bobada"
+# print(person)
+
+# *Testing for an Existing Key
+# Sometimes you may want to test if a key already exists in the dictionary to know whether to add an initial value or 
+# replace an existing value.
+
+# if some_key in my_dictionary:
+#     # update the value
+
+# This also works with the not logical operator:
+
+# if "email" not in person:
+#     person["email"] = "newemail@email.com"
+# else:
+#     print("Would you like to replace your existing email?")
+
+# *Accessing Values
+# To access the values of a dictionary, you can use the familiar square brackets along with the key to obtain its value.
+
+# print(person["first_name"])
+# full_name = person["first_name"] + " " + person["last_name"]
+
+# *Removing Values
+# There are 2 ways to remove a key:value pair from a dictionary. 
+
+# value_removed = capitals.pop('svk') # will remove the key 'svk' and return it's value
+# del capitals['dnk'] # will delete the key, and not return anything
+
+# *Multi-Line Syntax Too!
+# You can write any dictionary's key-value pairs on multiple lines to make it easier to read, which is very useful for larger 
+# dictionaries. For example the following dictionary.
+
+# person = {"first": "Ada", "last": "Lovelace", "age": 42, "is_organ_donor": True}
+
+# ..can also be written like so:
+
+# person = {
+#     "first": "Ada", 
+#     "last": "Lovelace", 
+#     "age": 42, 
+#     "is_organ_donor": True
+# }
+
+# *Common Built-in Functions and Methods
+# Python includes the following standalone functions for dictionaries:
+
+# len() - give the total length of the dictionary.
+# str() - produces a string representation of a dictionary.
+# type() - returns the type of the passed variable. If passed variable is a dictionary, it will then return a dict type.
+# Here are some very useful Python dictionary methods:
+
+# .clear() - removes all elements from the dictionary
+# .get(key, default=None) - A safe way to get a value, if the key might not exist. Returns the value for the specified key or None (or a value you specify) if the key is not in the dictionary.
+# .update(pairs_to_update) - Add and update multiple key-value pairs at once, by passing in another dictionary of the pairs to update and add.
+
+# *Other Useful Methods!
+# https://www.w3schools.com/python/python_ref_dictionary.asp
+
+# *For Loops through Dictionaries
+# Dictionaries are also iterable. When we iterate through a dictionary, the iterator is each of the keys of the dictionary.
+
+# my_dict = { "name": "Noelle", "language": "Python" }
+# for each_key in my_dict:
+#     print(each_key)
+# # output: name, language
+
+# That means if we want the values of our dictionary, we might do something like this:
+
+# my_dict = { "name": "Noelle", "language": "Python" }
+# for each_key in my_dict:
+#     print(my_dict[each_key])
+# # output: Noelle, Python
+
+# Dictionaries also have a few additional methods that allow us to iterate through them and have the keys and/or values as the iterator. 
+# Test these out to get a better understanding:
+
+# capitals = {"Washington":"Olympia","California":"Sacramento","Idaho":"Boise","Illinois":"Springfield","Texas":"Austin","Oklahoma":"Oklahoma City","Virginia":"Richmond"}
+# # another way to iterate through the keys
+# for key in capitals.keys():
+#      print(key)
+# # output: Washington, California, Idaho, Illinois, Texas, Oklahoma, Virginia
+# #to iterate through the values
+# for val in capitals.values():
+#      print(val)
+# # output: Olympia, Sacramento, Boise, Springfield, Austin, Oklahoma City, Richmond
+# #to iterate through both keys and values
+# for key, val in capitals.items():
+#      print(key, " = ", val)
+# # output: Washington = Olympia, California = Sacramento, Idaho = Boise, etc
+
+# *Nesting
+# Nesting is also allowed in dictionaries. In other words, dictionaries may contain lists and tuples as well as other dictionaries. 
+# Likewise, lists may contain dictionaries. All of these may be many levels deep! In this module you'll become more familiar 
+# with how to manipulate nested lists and dictionaries.
+
+# # List of dictionaries
+# users = [
+#     {"first": "Ada", "last": "Lovelace"}, # index 0
+#     {"first": "Alan", "last": "Turing"}, # index 1
+#     {"first": "Eric", "last": "Idle"} # index 2
+# ]
+# # Dictionary of lists
+# resume_data = {
+#     #        	     0           1           2
+#     "skills": ["front-end", "back-end", "database"],
+#     #                0           1
+#     "languages": ["Python", "JavaScript"],
+#     #                0              1
+#     "hobbies":["rock climbing", "knitting"]
+# }
+
+# *Accessing Values in Nested Dictionaries
+# To access a value in a nested data structure take a look at how you would access the first user's last name. 
+
+# print(users[0]["last"]) # prints Lovelace
+
+# First, users[0] is the whole user dictionary stored at index 0. Next, you find the value stored at the key "last" where 
+# we finally get the raw value, "Lovelace". 
