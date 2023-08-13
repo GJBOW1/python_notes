@@ -733,3 +733,312 @@
 
 # First, users[0] is the whole user dictionary stored at index 0. Next, you find the value stored at the key "last" where 
 # we finally get the raw value, "Lovelace". 
+
+# *OOP (Object Oriented Programming) 
+# Object Oriented Programming is something that has revolutionized the way programming is done today. If used 
+# correctly, it can save you loads of time. It will also help you to avoid repeating code that solves the same 
+# simple problem, making code maintenance easy. In this chapter, you'll learn how to use and implement OOP.
+# Would it surprise you to know that you have been taking advantage of OOP already? For example, you know that 
+# you can call the append method if you're working with a list, but not with a dictionary or a number. You know 
+# that you can get the length of a list or dictionary, but not of a boolean. That is because each type of thing, 
+# or object, has specific properties and functionality associated with it.
+
+# This grouping, or encapsulating, of properties and functionalities by object is a fundamental principle of OOP 
+# and is implemented with classes.
+
+# To better understand these concepts, we'll start by creating some of our own classes by representing real-world 
+# things, and then go a little more abstract as we peek inside of a few data structures.
+
+# Whenever we declare a variable, we are creating an instance of a class. For example, by declaring x = [1,2,3], x 
+# is an instance of a list. An instance is simply an object that follows the pattern defined by its class.
+
+# Let's consider an example of a custom class we'll need in the context of a banking application.  As almost all 
+# applications revolve around users, they should define a User class.  The information we need about a user would 
+# be different than what we would need if we were building a social media application. Instead of allowing a user 
+# to define their own properties, we set a standard for what a user should have on our website.  This ensures 
+# consistent creation of User instances.
+
+# Here's the syntax for creating a class that we want to call User:
+
+# class User:
+#     pass    # we'll fill this in shortly
+
+# And here's how we create a new instance of our class:
+
+# michael = User()
+# anna = User()
+
+# Over the next few tabs, we'll start fleshing out our classes with:
+
+# Attributes: Characteristics shared by all instances of the class type.
+# Methods: Actions that an object can perform. A user in a banking application, for example, may need to be able 
+# to calculate age based on the user's birthday or open a new bank account associated with that user.
+
+# *The Constructor
+# Whenever you sign up for an account on a new website, your information as a user is eventually saved to a database. 
+# Since we want all users to have the same pieces of information, first name, last name, age, email and so forth, 
+# it's a good idea to have a uniform way to always include that data whenever a user is created. A bit like filling 
+# out a form on a clipboard at the doctor's office.  
+
+# For this, we will use a constructor. A constructor is a function that contains instructions for making a new 
+# instance of a class, in this case a new user. It's kind of like when you turn in your completed medical forms 
+# to the receptionist. In Python, this is a special function called the __init__ method. When called, this method 
+# will designate some space in memory to store the user, and then assign the first name, last name and age by 
+# executing the lines below:
+    
+# # declare a class and give it name User
+# class User:		
+#     def __init__(self):
+#         self.first_name = "Ada"
+#         self.last_name = "Lovelace"
+#         self.age = 42
+
+# Note: We will be using the term method to refer to functions that specifically belong to a class, in other 
+# words, functions that are defined inside the scope of a class definition. For now we only have one method, 
+# the __init__ method. 
+
+# *Making Instances
+# By defining the User class, in effect we've defined a new data type, User! In the same way we can create 
+# different lists, or dictionaries, we can create and store many different users. We said that the  __init__ 
+# method creates a user, but when and how does this method get called to create new users? 
+
+# *User()
+# You can use the syntax Your_Class_Name() to create and then store a new instance of a class, in this case,  
+# User() to make and save a new user in memory, but remember, you'll need a variable to store it! For the most 
+# part, you'll create your object instances outside the class definition, in the outer or global scope. 
+
+# class User:		
+#     def __init__(self):
+#         self.first_name = "Ada"
+#         self.last_name = "Lovelace"
+#         self.age = 42
+# # Now that you have a class set up with a constructor 
+# # You can assign new variables to new users in the outer scope!
+# user_ada = User()
+# print(user_ada.first_name) # prints Ada
+
+# In this example we're just storing two strings and a number together in the variable user_ada, similar to how 
+# a dictionary stores multiple pieces of data in one place, they are stored as one data type, type User. And you 
+# can access them with dot-notation:  user_ada.first_name
+
+# *Intro to Self
+# Essentially self is a placeholder for future instances, future users, like a blank form. When the line  
+# user_ada = User() is executed in the example above, the __init__ method is called, like a patient handing 
+# in the clipboard to the receptionist. In this case, the self variable is referring to user_ada. This step 
+# is a bit like writing her name or patient number on an empty folder and sticking her info in it to file 
+# away. If you create another variable with say, user_2 = User(),  the constructor is called again but this 
+# time the self variable inside the constructor will refer to user_2, much like a different patient handing 
+# in their form.
+
+# user_2 = User()
+# print(user_2.first_name) # also prints Ada
+
+# *Instance Attributes
+# Let's build a new class for storing data about shoes for a shoe store management application. We want a 
+# Shoe to have a brand, type, price and status of whether or not that shoe is in-stock.
+
+# Instance attributes are defined in the constructor, that special __init__ method, which is called when a 
+# new object is instantiated, in this case, when a new type of shoes is added to inventory.
+
+# # declare a class and give it name Shoe
+# class Shoe:		
+#     def __init__(self):
+#         self.brand = "Vans"
+#         self.type = "Classic Sk8-Hi"
+#     	self.price = 69.99
+#     	self.in_stock = True
+
+# Now we can create instances of Shoe outside the scope of the class definition:
+
+# skater_shoe = Shoe()
+# dress_shoe = Shoe()
+# # Accessing the instance's attributes
+# print(skater_shoe.type) # Classic Sk8-Hi
+# print(dress_shoe.type)	# Classic Sk8-Hi
+
+# We can also set the values for our instance's attributes:
+
+# skater_shoe.type = "Low-top Trainers"
+# print(skater_shoe.type)
+# # output: Low-top Trainers
+# dress_shoe.type = "Ballet Flats"
+# print(dress_shoe.type)
+# # output: Ballet Flats
+
+# The first parameter of an instance method within a class will be self, and the instance 
+# attributes are also indicated by self..
+
+# self is a reference to the instance, not the class, in this case this particular pair of 
+# shoes, not the generic Shoe class.
+
+# *Passing in Arguments
+# While we definitely want every shoe to have a brand, type, price and status, we don't want all of our 
+# shoes to have the same brand, type and price upon creation. How will we know what the type should be?
+
+# Now we are going to pass in arguments into the __init__ method to specify a shoe's instance attributes.
+
+# In our example, even though we have 4 instance attributes, we only require input for 3 of them. When a 
+# particular Shoe instance is created, we should expect to receive specific values for the brand, type 
+# and price. We'll assume, however, that every shoe starts with in_stock set to true. Let's adjust our 
+# code to allow arguments to be passed in upon instantiation, so we can customize all the attributes 
+# as soon as it is created:
+
+# class Shoe:
+#     # now our method has 4 parameters (including self)!
+#     def __init__(self, brand, shoe_type, price):
+#     	# we assign them accordingly
+#         self.brand = brand
+#         self.type = shoe_type
+#     	self.price = price
+#     	# the status is set to True by default
+#         self.in_stock = True
+# skater_shoe = Shoe("Vans", "Low-top Trainers", 59.99)
+# dress_shoe = Shoe("Jack & Jill Bootery", "Ballet Flats", 29.99)
+# print(skater_shoe.type)	# output: Low-top Trainers
+# print(dress_shoe.type)	# output: Ballet Flats
+
+# Now it's time to add some functionality to our class. Methods are just functions that belong to 
+# a class. This means that we can't call them independently as we have called functions previously; 
+# rather, methods must be called from an instance of a class. 
+
+# For example, we want to get custom greetings for users, like "Hello my name is Adrien!" we want 
+# to be able to call the method from the user instance using dot notation, because each user has 
+# a different name.  Making such a call would look something like this:
+
+# adrien.greeting()
+
+# To be able to call on this method, it needs to exist. Let's make it!
+
+# class User:		# here's what we have so far
+#     def __init__(self, name, email):
+#         self.name = name
+#         self.email = email
+#     # adding the greeting method
+#     def greeting(self):
+#     	print(f"Hello, my name is {self.name}")
+
+# Don't forget that the first parameter of every method within a class should be self. Notice 
+# that, in addition to whatever arguments are passed in as a traditional function, methods 
+# also have access to the class's attributes.
+
+# Now that our method is written, we can call it:
+
+# adrien = User("Adrien", "adion@codingdojo.com")
+# cool_person = User("Sadie", "sflick@codingdojo.com")
+    
+# adrien.greeting()
+# # prints Hello, my name is Adrien
+    
+# cool_person.greeting()
+# # prints Hello, my name is Sadie
+
+# *Self
+# It's probably time to talk about self. The self parameter includes all the information 
+# about the individual object that has called the method. But how does it get passed in? 
+# Based on the signature for the __init__ method, it requires 3 arguments. However, when 
+# we call on it, we only pass in two. Likewise the greeting method requires one argument, 
+# but we call it with no arguments. What's happening here? Because we are calling on the 
+# method from the instance, this is known as implicit passage of self. When we call on a 
+# method from an instance, the memory address of that instance, along with all of its 
+# information (name, email, balance), is passed in as self.
+
+# *Changing Shoes Without Methods
+# Let's just take the "on sale" functionality we want to implement. What would that look 
+# like without writing any methods?
+
+# class Shoe:
+#     # now our method has 4 parameters (including self)!
+#     def __init__(self, brand, shoe_type, price):
+#     	# we assign them accordingly
+#         self.brand = brand
+#         self.type = shoe_type
+#         self.price = price
+#         # the status is set to True by default
+#         self.in_stock = True
+    
+# # Create two shoe instances
+# skater_shoe = Shoe("Vans", "Low-top Trainers", 59.99)
+# dress_shoe = Shoe("Jack & Jill Bootery", "Ballet Flats", 29.99)
+        
+# # The skater shoes go on sale by 20% reduced price:
+# skater_shoe.price = skater_shoe.price * (1 - 0.2)
+        
+# # The dress shoes go on sale by 10% reduction:
+# dress_shoe.price = dress_shoe.price * (1 - 0.1)
+        
+# # The skater shoes go on sale AGAIN by another 10%:
+# skater_shoe.price = skater_shoe.price * (1 - 0.1)
+
+# *Methods and Using Self
+# Let's move the code from those last three lines into a method that will do the 
+# same thing, but only replacing the highlighted parts with placeholders for the 
+# information we use when we want to call it.
+
+# class Shoe:
+#     # now our method has 4 parameters (including self)!
+#     def __init__(self, brand, shoe_type, price):
+#     	# we assign them accordingly
+#         self.brand = brand
+#         self.type = shoe_type
+#         self.price = price
+#         # the status is set to True by default
+#         self.in_stock = True
+    
+#     # Takes a float/percent as an argument and reduces the
+#     # price of the item by that percentage.
+#     def on_sale_by_percent(self, percent_off):
+#         self.price = self.price * (1-percent_off)
+
+# Take a look and compare to the patterns you saw above. We really didn't change 
+# anything, except now we have placeholders for the elements that would change each time:
+
+# 1. The particular shoe, that is, the instance
+# 2. The sale percent we wanted to reduce the price by
+
+# *Try it Out Yourself!
+# Let's see what all of those methods would look like if we put them in the class. 
+# Open this code on the Trace website so you can see all the variables and outputs 
+# clearly. You can also copy the code and run it locally from a file. Try playing 
+# around with creating instances and calling the methods. Then print the attributes 
+# to see how they may have changed. Again, don't spend more than 5 minutes experimenting! 
+# Just enough to identify and write down the biggest questions you have.
+
+# Note: Notice that most of these methods 
+# 1.) don't return anything, and 
+# 2.) use the self keyword quite a bit.
+# This is because these are operations that we're performing to alter that particular 
+# shoe's attributes, and once self has been altered, we don't need to return anything. 
+# Which method does return something? Why?
+
+# class Shoe:
+
+#     def __init__(self, brand, shoe_type, price):
+#         self.brand = brand
+#         self.type = shoe_type
+#         self.price = price
+#         self.in_stock = True
+    
+#     # Takes a float/percent as an argument and reduces the
+#     # price of the item by that percentage.
+#     def on_sale_by_percent(self, percent_off):
+#         self.price = self.price * (1-percent_off)
+    
+#     # Returns a total with tax added to the price.
+#     def total_with_tax(self, tax_rate):
+#         tax = self.price * tax_rate
+#         total = self.price + tax
+#         return total
+    
+#     # Reduces the price by a fixed dollar amount.
+#     def cut_price_by(self, amount):
+#     	if amount < self.price:
+#         	self.price -= amount
+#     	else:
+#     		print("Price deduction too large.")
+
+# # Create some shoes. Call some methods on those shoes. Print your shoe's attributes..
+# my_shoe = Shoe("Converse", "Low-tops", 36.00)
+# print(my_shoe.total_with_tax(0.05))
+# my_shoe.cut_price_by(10)
+# print(my_shoe.price)
+
